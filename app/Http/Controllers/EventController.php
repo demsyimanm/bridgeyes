@@ -9,7 +9,9 @@ use Request;
 use App\Role;
 use App\User;
 use App\Event;
+use App\Bulletin;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\BulletinController;
 
 class EventController extends Controller
 {
@@ -182,7 +184,9 @@ class EventController extends Controller
      */
     public function manage($id)
     {
-        $this->data['event'] = Event::find($id);
+        $this->data = array();
+        $this->data['eve'] = Event::find($id);
+        $this->data['bulletin'] = Bulletin::where('id','=',$id)->get();
         return view('admin.event.konten.manage',$this->data);
     }
 
@@ -208,11 +212,7 @@ class EventController extends Controller
     {
 
         if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2){
-            if (Request::isMethod('get')) {
-                $this->data = array();
-                $this->data['eve'] = Event::find($id);
-                return View::make('admin.event.update', $this->data);
-            } else if (Request::isMethod('post')) {
+            if (Request::isMethod('post')) {
 
                 $data = Input::all();
                 if (empty($_FILES['imginp']['name'])) {
@@ -333,7 +333,7 @@ class EventController extends Controller
                     'gambar' => $target_file_final,
                     'file' => $target_file_final_file
                 ));
-                return redirect('admin/event/');
+                return redirect('admin/event/update/'.$id);
             }
         } else {
             return redirect('admin/event/');

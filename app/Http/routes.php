@@ -47,11 +47,13 @@ Route::group(['middleware' => 'auth'], function()
 	Route::get('admin/event','EventController@index');
 	Route::get('admin/event/create','EventController@create');
 	Route::post('admin/event/create',array('before' => 'csrf', 'uses' => 'EventController@create'));
-	Route::get('admin/event/update/{id}','EventController@update');
+	Route::get('admin/event/update/{id}','EventController@manage');
 	Route::post('admin/event/update/{id}',array('before' => 'csrf', 'uses' => 'EventController@update'));
 	Route::get('admin/event/delete/{id}','EventController@destroy');
 	Route::post('admin/event/delete/{id}',array('before' => 'csrf', 'uses' => 'EventController@destroy'));
 
-	Route::get('admin/event/manage/{id}','EventController@manage');
+		/*Buletin*/
+		Route::get('admin/event/manage/{id_event}/bulletin/create','BulletinController@create');
+		Route::post('admin/event/manage/{id_event}/bulletin/create',array('before' => 'csrf', 'uses' => 'BulletinController@create'));
 
 });

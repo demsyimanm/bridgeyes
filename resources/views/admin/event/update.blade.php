@@ -19,7 +19,7 @@
     </div>
   @endif
   <div class="box-body">
-    <br><br>
+    <br><br><br>
     <div style="border:solid 2px #D9DCE0;background-color:#F5F5F5">
       <form id="form1" runat="server" class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">

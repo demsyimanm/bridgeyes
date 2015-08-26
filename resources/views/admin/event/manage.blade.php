@@ -47,7 +47,7 @@
 	    	@foreach($event as $eve)
 	      	<tr>
 	      		<td class="text-center"><?php echo $i++ ?></td>
-	      		<td><a href="{{ URL::to('admin/event/manage/'.$eve->id) }}" >{{ $eve->judul }}</td>
+	      		<td><a href="{{ URL::to('admin/event/update/'.$eve->id) }}" >{{ $eve->judul }}</td>
 	      		<td><?php echo substr(nl2br($eve->konten),0,30)." ..."; ?></td>
 	      		<td>{{$eve->tanggal}}</td>
 	      		<td><img src="{{URL::to(substr($eve->gambar,6))}}" style="width:80%"></td>
