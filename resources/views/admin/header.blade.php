@@ -44,7 +44,6 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	<!-- DataTables CSS -->
-	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.8/css/jquery.dataTables.css">
 	<link rel="stylesheet" href="{{ URL::to('assets/plugin/summernote/dist/summernote.css')}}">
   
 <!-- jQuery -->

@@ -78,21 +78,94 @@
                   </div><!-- /.tab-pane -->
 
                   <div class="tab-pane" id="participant">
-                    
+                    <ul class="nav nav-tabs">
+	                  <li><a href="#single" data-toggle="tab">Single</a></li>
+	                  <li><a href="#team" data-toggle="tab">Team</a></li>
+	                </ul><br><br>
+	                <div class="tab-content ">
+	                	 <div class="tab-pane" id="single">
+                    		<div class="col-xs-4 text-left">
+						        <a href="{{ URL::to('admin/event/manage/'.$eve->id.'/participant/single/create') }}" class="btn btn-block btn-social btn-instagram">
+					            	<i class="fa fa-plus"></i> Upload Data Peserta Kategori Single
+					          	</a>
+					      	</div><br><br><br>
+					      	<script> 
+							    $(function () {
+							    	$("#data_table").DataTable();
+							    });
+							</script>
+						  	<table id="data_table" class="table table-bordered table-striped">
+						  	<?php $i = 1;?>
+						    <thead>
+							    <tr>
+							        <th width="5%" class="text-center">No</th>
+							        <th width="40%">Tanggal<span style="font-size:10px;"></th>
+							        <th width="45%">Buletin</th>
+							        <th width="10%">Action</th>
+						      	</tr>
+						    </thead>
+						    <tbody>
+						    	
+						    </tbody>
+						    <tfoot>
+						      	<tr>
+						       		<th class="text-center">No</th>
+							        <th>Tanggal</th>
+						        	<th>File</th>
+						        	<th>Action</th>
+						      	</tr>
+						    </tfoot>
+						  	</table>
+                  		 </div><!-- /.tab-pane -->
+                  		 <div class="tab-pane" id="team">
+                    		<div class="col-xs-4 text-left">
+						        <a href="{{ URL::to('admin/event/manage/'.$eve->id.'/bulletin/create') }}" class="btn btn-block btn-social btn-instagram">
+					            	<i class="fa fa-plus"></i> Upload Data Peserta Kategori Team
+					          	</a>
+					      	</div><br><br><br>
+					      	<script> 
+							    $(function () {
+							    	$("#data_table3").DataTable();
+							    });
+							</script>
+						  	<table id="data_table3" class="table table-bordered table-striped">
+						  	<?php $i = 1;?>
+						    <thead>
+							    <tr>
+							        <th width="5%" class="text-center">No</th>
+							        <th width="40%">Tanggal<span style="font-size:10px;"></th>
+							        <th width="45%">Buletin</th>
+							        <th width="10%">Action</th>
+						      	</tr>
+						    </thead>
+						    <tbody>
+						    	
+						    </tbody>
+						    <tfoot>
+						      	<tr>
+						       		<th class="text-center">No</th>
+							        <th>Tanggal</th>
+						        	<th>File</th>
+						        	<th>Action</th>
+						      	</tr>
+						    </tfoot>
+						  	</table>
+                  		 </div><!-- /.tab-pane -->
+	                </div>
                   </div><!-- /.tab-pane -->
 
                   <div class="tab-pane" id="bulletin">
                     <div class="col-xs-3 text-left">
-				        <a href="{{ URL::to('admin/event/create') }}" class="btn btn-block btn-social btn-instagram">
+				        <a href="{{ URL::to('admin/event/manage/'.$eve->id.'/bulletin/create') }}" class="btn btn-block btn-social btn-instagram">
 			            	<i class="fa fa-plus"></i> Tambah Bulletin
 			          	</a>
 			      	</div><br><br><br>
-					<script> 
+			      	<script> 
 					    $(function () {
-					    	$("#data_table").DataTable();
+					    	$("#data_table2").DataTable();
 					    });
-				    </script>
-				  	<table id="data_table" class="table table-bordered table-striped">
+					</script>
+				  	<table id="data_table2" class="table table-bordered table-striped">
 				  	<?php $i = 1;?>
 				    <thead>
 					    <tr>
@@ -115,8 +188,8 @@
 				      			@endif
 				      		</td>
 				      		<td>
-				      				<a href="{{ URL::to('admin/event/bulletin/update/'.$bull->id) }}" class="btn btn-default"><i class="fa fa-pencil"></i>
-				      				<a href="{{ URL::to('admin/event/bulletin/delete/'.$bull->id) }}" class="btn btn-default" ><i class="fa fa-times"></i>
+				      				<a href="{{ URL::to('admin/event/manage/'.$eve->id.'/bulletin/update/'.$bull->id) }}" class="btn btn-default"><i class="fa fa-pencil"></i>
+				      				<a href="{{ URL::to('admin/event/manage/'.$eve->id.'/bulletin/delete/'.$bull->id) }}" class="btn btn-default" ><i class="fa fa-times"></i>
 				      		</td>
 				      	</tr>
 				      	@endforeach
@@ -194,4 +267,5 @@
            autoclose: true
       });
     </script>
+    
 @endsection

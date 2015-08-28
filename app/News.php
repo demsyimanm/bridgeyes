@@ -17,7 +17,8 @@ class News extends Model
         'judul',
         'konten',
         'tanggal',
-        'gambar'
+        'gambar',
+        'users_id'
     );
     protected $softDelete = true;
     protected $dates = ['deleted_at'];

@@ -24,6 +24,12 @@ Route::group(['middleware' => 'auth'], function()
 
 	/*News*/
 	Route::get('admin/news', 'NewsController@index');
+	Route::get('admin/news/create', 'NewsController@create');
+	Route::post('admin/news/create', array('before' => 'csrf', 'uses' => 'NewsController@create'));
+	Route::get('admin/news/delete/{id}','NewsController@destroy');
+	Route::post('admin/news/delete/{id}',array('before' => 'csrf', 'uses' => 'NewsController@destroy'));
+	Route::get('admin/news/update/{id}','NewsController@update');
+	Route::post('admin/news/update/{id}',array('before' => 'csrf', 'uses' => 'NewsController@update'));
 
 	/*Artikel*/
 	Route::get('admin/artikel/{id}', 'ArtikelController@index');
@@ -55,5 +61,12 @@ Route::group(['middleware' => 'auth'], function()
 		/*Buletin*/
 		Route::get('admin/event/manage/{id_event}/bulletin/create','BulletinController@create');
 		Route::post('admin/event/manage/{id_event}/bulletin/create',array('before' => 'csrf', 'uses' => 'BulletinController@create'));
+		Route::get('admin/event/manage/{id_event}/bulletin/delete/{id_bulletin}','BulletinController@destroy');
+		Route::post('admin/event/manage/{id_event}/bulletin/delete/{id_bulletin}',array('before' => 'csrf', 'uses' => 'BulletinController@destroy'));
+		Route::get('admin/event/manage/{id_event}/bulletin/update/{id_bulletin}','BulletinController@update');
+		Route::post('admin/event/manage/{id_event}/bulletin/update/{id_bulletin}',array('before' => 'csrf', 'uses' => 'BulletinController@update'));
 
+		/*Participant - single*/
+		Route::get('admin/event/manage/{id_event}/participant/single/create','ParticipantSingleController@create');
+		Route::post('admin/event/manage/{id_event}/participant/single/create',array('before' => 'csrf', 'uses' => 'ParticipantSingleController@create'));
 });

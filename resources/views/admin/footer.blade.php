@@ -14,8 +14,6 @@
     <!-- Bootstrap 3.3.5 -->
    
     <!-- Morris.js charts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="{{ URL::to('assets/AdminLTE/plugins/morris/morris.min.js') }}"></script>
     <!-- Sparkline -->
     <script src="{{ URL::to('assets/AdminLTE/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
     <!-- jvectormap -->

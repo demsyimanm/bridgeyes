@@ -186,7 +186,7 @@ class EventController extends Controller
     {
         $this->data = array();
         $this->data['eve'] = Event::find($id);
-        $this->data['bulletin'] = Bulletin::where('id','=',$id)->get();
+        $this->data['bulletin'] = Bulletin::where('event_id','=',$id)->get();
         return view('admin.event.konten.manage',$this->data);
     }
 
