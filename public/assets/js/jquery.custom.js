@@ -55,7 +55,7 @@ function postHover() {
 			$(this).find('.blog-post-hover').stop('true','true').fadeTo("normal",1);
 	},
 		function(){
-			$(this).find('.blog-post-hover').stop('true','true').fadeTo("normal",0);
+			$(this).find('.blog-post-hover').stop('true','true').fadeTo("normal",0.4);
 	});
 }
 
