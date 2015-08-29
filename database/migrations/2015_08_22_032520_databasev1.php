@@ -16,22 +16,10 @@ class Databasev1 extends Migration
         Schema::create('artikel', function($table)
         {
             $table->increments('id');
-            $table->string('judul');
-            $table->binary('konten');
+            $table->string('judul', 255)->nullable();
+            $table->string('konten', 1000)->nullable();
             $table->date('tanggal');
-            $table->binary('gambar');
-            $table->string('kategori');
-            $table->softDeletes();
-            $table->timestamps();
-        });
-
-        Schema::create('news', function($table)
-        {
-            $table->increments('id');
-            $table->string('judul');
-            $table->binary('konten');
-            $table->date('tanggal');
-            $table->binary('gambar');
+            $table->string('kategori')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

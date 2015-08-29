@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
 {
@@ -14,9 +15,11 @@ class Event extends Model
     public $timestamps = true;
     protected $fillable = array(
         'judul',
+        'users_id',
         'konten',
         'tanggal',
-        'hasil'
+        'gambar',
+        'file'
     );
     protected $softDelete = true;
     protected $dates = ['deleted_at'];

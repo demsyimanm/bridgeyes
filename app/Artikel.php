@@ -17,14 +17,21 @@ class Artikel extends Model
         'judul',
         'konten',
         'tanggal',
-        'kategori'
+        'users_id',
+        'kategori_id'
     );
     protected $softDelete = true;
     protected $dates = ['deleted_at'];
 
-   /* public function user()
+    public function user()
     {
         return $this->belongsTo('App\User');
-    }*/
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo('App\kategori');
+    }
+
 
 }

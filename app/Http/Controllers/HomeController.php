@@ -23,60 +23,17 @@ class HomeController extends Controller
         return view('home', $this->data);
     }
 
-    public function event()
-    {
-        return view('list_event');
-    }
-
-    public function blog()
-    {
-        return view('blog_full');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
+
+    
     public function create()
     {
         //
     }
-
-    public function participant()
-    {
-        return view('participant_detail');
-    }
-
-    public function bulletins()
-    {
-        return view('bulletins');
-    }
-
-    public function gallery()
-    {
-        return view('gallery');
-    }
-
-    public function result()
-    {
-        return view('result_detail');
-    }
-
-    public function event_detail()
-    {
-        return view('event_detail');
-    }
-
-    public function all_article()
-    {
-        return view('all_article');
-    }
-
-    public function all_news()
-    {
-        return view('all_news');
-    }    
 
     /**
      * Store a newly created resource in storage.

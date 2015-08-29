@@ -1,93 +1,48 @@
-<div class="span7 navigation">
+       <div class="span7 navigation">
             <div class="navbar hidden-phone">
             
             <ul class="nav">
-            <li><a href="{{URL::to('/')}}">HOME</a></li>
-            <li><a href="{{URL::to('/')}}">NEWS</a></li>
-             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">ARTICLE <b class="caret"></b></a>
+            <li class="dropdown active">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="index.htm">Home <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="blog-style1.htm">BIDDING</a></li>
-                    <li><a href="blog-style1.htm">CONVENTION</a></li>
-                    <li><a href="blog-style1.htm">DEFENCE</a></li>
-                    <li><a href="blog-style1.htm">PLAY</a></li>
-                </ul>
-             </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">BRIDGE TOURNAMENT <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="blog-style1.htm">SCHEDULE</a></li>
-                    <li><a href="blog-style1.htm">RECENT RESULTS</a></li>
+                    <li><a href="index.htm">Full Page</a></li>
+                    <li><a href="index-gallery.htm">Gallery Only</a></li>
+                    <li><a href="index-slider.htm">Slider Only</a></li>
                 </ul>
             </li>
-            <li><a href="{{URL::to('/')}}">ABOUT US</a></li>
-            <li id="tombol_login"><a href="{{URL::to('/')}}" data-toggle="modal" data-target="#LoginModal" >LOG IN</a></li>
-            <li style="background-color:rgb(216, 69, 11);color:white;"><a href="{{URL::to('/')}}" style="color:white;" data-toggle="modal" data-target="#SignupModal" >SIGN UP</a></li>
+           <li><a href="features.htm">Features</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Pages <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="page-full-width.htm">Full Width</a></li>
+                    <li><a href="page-right-sidebar.htm">Right Sidebar</a></li>
+                    <li><a href="page-left-sidebar.htm">Left Sidebar</a></li>
+                    <li><a href="page-double-sidebar.htm">Double Sidebar</a></li>
+                </ul>
+            </li>
+             <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Gallery <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="gallery-3col.htm">Gallery 3 Column</a></li>
+                    <li><a href="gallery-4col.htm">Gallery 4 Column</a></li>
+                    <li><a href="gallery-6col.htm">Gallery 6 Column</a></li>
+                    <li><a href="gallery-4col-circle.htm">Gallery 4 Round</a></li>
+                    <li><a href="gallery-single.htm">Gallery Single</a></li>
+                </ul>
+             </li>
+             <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Blog <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="blog-style1.htm">Blog Style 1</a></li>
+                    <li><a href="blog-style2.htm">Blog Style 2</a></li>
+                    <li><a href="blog-style3.htm">Blog Style 3</a></li>
+                    <li><a href="blog-style4.htm">Blog Style 4</a></li>
+                    <li><a href="blog-single.htm">Blog Single</a></li>
+                </ul>
+             </li>
+             <li><a href="page-contact.htm">Contact</a></li>
             </ul>
            
-            </div>
-
-            <!-- Modal -->
-            <div id="LoginModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">LOG IN</h4>
-                  </div>
-                  <div id="form_login">
-                     <form role="form" method="POST" action="{{URL::to('user/login')}}">
-                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <div class="form-group" style="margin-bottom:3%;">
-                        <label for="email">Username:</label>
-                        <input type="text" class="form-control" id="email" name="username" style="margin: 0 auto;display: block;width:100%;">
-                      </div>
-                      <div class="form-group">
-                        <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="pwd" name="password" style="margin: 0 auto;display: block;width:100%;">
-                      </div>
-                      <button type="submit" class="btn btn-warning" style="margin-top:5%;">LOG IN</button>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div id="SignupModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">SIGN UP</h4>
-                  </div>
-                  <div id="form_login">
-                     <form role="form" method="POST" action="{{URL::to('signup/auth')}}">
-                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <div class="form-group" style="margin-bottom:3%;">
-                        <label for="email">Username:</label>
-                        <input type="text" class="form-control" id="email" name="username" style="margin: 0 auto;display: block;width:100%;">
-                      </div>
-                      <div class="form-group" style="margin-bottom:3%;">
-                        <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="pwd" name="password" style="margin: 0 auto;display: block;width:100%;">
-                      </div>
-                      <div class="form-group" style="margin-bottom:3%;">
-                        <label for="email">Full Name:</label>
-                        <input type="text" class="form-control" id="email" name="nama" style="margin: 0 auto;display: block;width:100%;">
-                      </div>
-                      <button type="submit" class="btn btn-warning" style="margin-top:5%;">SIGN ME UP!</button>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <!-- Mobile Nav
@@ -96,18 +51,29 @@
                 <div class="mobile-nav-select">
                 <select onchange="window.open(this.options[this.selectedIndex].value,'_top')">
                     <option value="">Navigate...</option>
-                    <option value="index.htm">HOME</option>
-                    <option value="index.htm">NEWS</option>
-                    <option value="page-full-width.htm">ARTICLE</option>
-                        <option value="page-full-width.htm">- BIDDING</option>
-                        <option value="page-right-sidebar.htm">- CONVENTION</option>
-                        <option value="page-full-width.htm">- DEFENCE</option>
-                        <option value="page-right-sidebar.htm">- PLAY</option>
-                    <option value="gallery-4col.htm">BRIDGE TOURNAMENT</option>
-                        <option value="gallery-3col.htm">- SCHEDULE</option>
-                        <option value="gallery-4col.htm">- RECENT RESULTS</option>
-                    <option value="index.htm">ABOUT US</option>
-                    <option value="index.htm">LOG IN</option>
+                    <option value="index.htm">Home</option>
+                        <option value="index.htm">- Full Page</option>
+                        <option value="index-gallery.htm">- Gallery Only</option>
+                        <option value="index-slider.htm">- Slider Only</option>
+                    <option value="features.htm">Features</option>
+                    <option value="page-full-width.htm">Pages</option>
+                        <option value="page-full-width.htm">- Full Width</option>
+                        <option value="page-right-sidebar.htm">- Right Sidebar</option>
+                        <option value="page-left-sidebar.htm">- Left Sidebar</option>
+                        <option value="page-double-sidebar.htm">- Double Sidebar</option>
+                    <option value="gallery-4col.htm">Gallery</option>
+                        <option value="gallery-3col.htm">- 3 Column</option>
+                        <option value="gallery-4col.htm">- 4 Column</option>
+                        <option value="gallery-6col.htm">- 6 Column</option>
+                        <option value="gallery-4col-circle.htm">- Gallery 4 Col Round</option>
+                        <option value="gallery-single.htm">- Gallery Single</option>
+                    <option value="blog-style1.htm">Blog</option>
+                        <option value="blog-style1.htm">- Blog Style 1</option>
+                        <option value="blog-style2.htm">- Blog Style 2</option>
+                        <option value="blog-style3.htm">- Blog Style 3</option>
+                        <option value="blog-style4.htm">- Blog Style 4</option>
+                        <option value="blog-single.htm">- Blog Single</option>
+                    <option value="page-contact.htm">Contact</option>
                 </select>
                 </div>
                 </form>
