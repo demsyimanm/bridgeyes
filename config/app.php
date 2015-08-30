@@ -113,7 +113,10 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+<<<<<<< HEAD
         'Maatwebsite\Excel\ExcelServiceProvider',
+=======
+>>>>>>> 3d0f7b3ecf1ccf83664913642cfc2c1d23b8319c
         Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -159,7 +162,11 @@ return [
     */
 
     'aliases' => [
+<<<<<<< HEAD
         'Excel'     => 'Maatwebsite\Excel\Facades\Excel',
+=======
+
+>>>>>>> 3d0f7b3ecf1ccf83664913642cfc2c1d23b8319c
         'App'       => Illuminate\Support\Facades\App::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
         'Auth'      => Illuminate\Support\Facades\Auth::class,
@@ -192,7 +199,6 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-        
 
     ],
 
