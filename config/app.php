@@ -113,7 +113,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        /*Illuminate\Maatwebsite\Excel\ExcelServiceProvider::class,*/
+        'Maatwebsite\Excel\ExcelServiceProvider',
         Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -159,7 +159,7 @@ return [
     */
 
     'aliases' => [
-        /*'Excel'     => Illuminate\Support\Facades\Excel::class,*/
+        'Excel'     => 'Maatwebsite\Excel\Facades\Excel',
         'App'       => Illuminate\Support\Facades\App::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
         'Auth'      => Illuminate\Support\Facades\Auth::class,
