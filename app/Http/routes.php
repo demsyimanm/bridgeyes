@@ -18,6 +18,23 @@ Route::get('admin/logout','AdminController@logout');
 Route::get('admin/register','AccountController@create');
 Route::post('admin/register',array('before' => 'csrf', 'uses' => 'AccountController@create'));
 
+Route::get('user/', 'UserController@index');
+Route::get('user/write_news', 'UserController@create_news');
+Route::get('user/write_article', 'UserController@create_article');
+Route::get('blog/', 'HomeController@blog');
+Route::get('article/', 'HomeController@all_article');
+Route::get('news/', 'HomeController@all_news');
+Route::get('signup/', 'UserController@signup');
+Route::post('signup/auth/', array('before' => 'csrf', 'uses' => 'UserController@signup'));
+Route::post('user/login/', array('before' => 'csrf', 'uses' => 'UserController@login'));
+Route::post('user/postnews/', array('before' => 'csrf', 'uses' => 'UserController@post_news'));
+Route::get('allevent/', 'HomeController@event');
+Route::get('event/', 'HomeController@event_detail');
+Route::get('event/participant/', 'HomeController@participant');
+Route::get('event/result/', 'HomeController@result');
+Route::get('event/bulletins/', 'HomeController@bulletins');
+Route::get('event/gallery/', 'HomeController@gallery');
+
 Route::group(['middleware' => 'auth'], function()
 {
 	Route::get('admin/home', 'AdminController@index');
@@ -70,22 +87,9 @@ Route::group(['middleware' => 'auth'], function()
 		Route::get('admin/event/manage/{id_event}/participant/single/create','ParticipantSingleController@create');
 		Route::post('admin/event/manage/{id_event}/participant/single/create',array('before' => 'csrf', 'uses' => 'ParticipantSingleController@create'));
 
-	Route::get('user/', 'UserController@index');
-	Route::get('user/write_news', 'UserController@create_news');
-	Route::get('user/write_article', 'UserController@create_article');
-	Route::get('blog/', 'HomeController@blog');
-	Route::get('article/', 'HomeController@all_article');
-	Route::get('news/', 'HomeController@all_news');
-	Route::get('signup/', 'UserController@signup');
-	Route::post('signup/auth/', array('before' => 'csrf', 'uses' => 'UserController@signup'));
-	Route::post('user/login/', array('before' => 'csrf', 'uses' => 'UserController@login'));
-	Route::post('user/postnews/', array('before' => 'csrf', 'uses' => 'UserController@post_news'));
-	Route::get('allevent/', 'HomeController@event');
-	Route::get('event/', 'HomeController@event_detail');
-	Route::get('event/participant/', 'HomeController@participant');
-	Route::get('event/result/', 'HomeController@result');
-	Route::get('event/bulletins/', 'HomeController@bulletins');
-	Route::get('event/gallery/', 'HomeController@gallery');
-
-
+		/*Gallery*/
+		Route::get('admin/event/manage/{id_event}/gallery/create','GalleryController@create');
+		Route::post('admin/event/manage/{id_event}/gallery/create',array('before' => 'csrf', 'uses' => 'GalleryController@create'));
+		Route::get('admin/event/manage/{id_event}/gallery/delete/{id_photo}','GalleryController@destroy');
+		Route::post('admin/event/manage/{id_event}/gallery/delete/{id_photo}',array('before' => 'csrf', 'uses' => 'GalleryController@destroy'));
 });

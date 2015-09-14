@@ -10,8 +10,10 @@ use App\Role;
 use App\User;
 use App\Event;
 use App\Bulletin;
+use App\Gallery;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BulletinController;
+use App\Http\Controllers\GalleryController;
 
 class EventController extends Controller
 {
@@ -187,6 +189,7 @@ class EventController extends Controller
         $this->data = array();
         $this->data['eve'] = Event::find($id);
         $this->data['bulletin'] = Bulletin::where('event_id','=',$id)->get();
+        $this->data['gallery'] = Gallery::where('event_id','=',$id)->get();
         return view('admin.event.konten.manage',$this->data);
     }
 

@@ -31,7 +31,7 @@
                 </ul><br><br>
                 <div class="tab-content">
                   <div class="active tab-pane" id="information">
-                  	<form id="form1" action="{{URL::to('admin/event/manage/'.$eve->id.'/bulletin/create')}}" class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
+                  	<form id="form1" action="{{ ('admin/event/update/'.$eve->id)}}" class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
 				        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				        <div class="form-group" style="margin-top:1%">
 				          <label class="col-md-2 control-label">Judul</label>
@@ -182,7 +182,7 @@
 				      		<td>{{ $bull->tanggal }}</td>
 				      		<td>
 				      			@if(!empty($bull->file))
-				      				<a href="{{URL::to($bull->file) }}" class="btn btn-default" style="margin:auto;position:relative;display:block" download><i class="fa fa-download"></i> Download</a>
+				      				<a href="{{URL::to(substr($bull->file,6)) }}" class="btn btn-default" style="margin:auto;position:relative;display:block" download><i class="fa fa-download"></i> Download</a>
 				      			@else 
 				      				<p>No File</p>
 				      			@endif
@@ -210,7 +210,48 @@
                   </div><!-- /.tab-pane -->
 
                   <div class="tab-pane" id="gallery">
-                    
+                     <div class="col-xs-3 text-left">
+				        <a href="{{ URL::to('admin/event/manage/'.$eve->id.'/gallery/create') }}" class="btn btn-block btn-social btn-instagram">
+			            	<i class="fa fa-plus"></i> Tambah Foto
+			          	</a>
+			      	</div><br><br><br>
+			      	<script> 
+					    $(function () {
+					    	$("#data_table4").DataTable();
+					    });
+					</script>
+				  	<table id="data_table4" class="table table-bordered table-striped">
+				  	<?php $i = 1;?>
+				    <thead>
+					    <tr>
+					        <th width="5%" class="text-center">No</th>
+					        <th width="60%">Foto<span style="font-size:10px;"></th>
+					        <th width="20%">Download</th>
+					        <th width="15%">Action</th>
+				      	</tr>
+				    </thead>
+				    <tbody>
+				    	@foreach($gallery as $gall)
+				      	<tr>
+				      		<td class="text-center"><?php echo $i++ ?></td>
+				      		<td><img src="{{URL::to(substr($gall->gambar,6))}}" style="width:25%"> </td>
+				      		<td><a href="{{URL::to(substr($gall->gambar,6)) }}" class="btn btn-default" style="margin:auto;position:relative;display:block" download><i class="fa fa-download"></i> Download</a></td>
+				      		<td>
+				      			<a href="{{ URL::to('admin/event/manage/'.$eve->id.'/gallery/delete/'.$gall->id) }}" class="btn btn-default" style="margin:auto;position:relative;display:block"><i class="fa fa-times"></i>
+				      			Delete</a>
+				      		</td>
+				      	</tr>
+				      	@endforeach
+				    </tbody>
+				    <tfoot>
+				      	<tr>
+				       		<th class="text-center">No</th>
+					        <th>Foto</th>
+				        	<th>Download</th>
+				        	<th>Action</th>
+				      	</tr>
+				    </tfoot>
+				  	</table>
                   </div><!-- /.tab-pane -->
                 </div><!-- /.tab-content -->
               </div><!-- /.nav-tabs-custom -->
