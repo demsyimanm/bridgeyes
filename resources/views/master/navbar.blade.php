@@ -1,3 +1,59 @@
+
+    <!-- Color Bars (above header)-->
+    <div class="color-bar-1"></div>
+    <div class="color-bar-2 color-bg"></div>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+            if (scroll <= 100) {
+                $("#header_fix").css("display","none");
+            }
+            else {
+                $("#header_fix").css("display","");
+            }
+        });
+    });
+    </script>
+
+    <!-- navbar_move -->
+    <div id="header_fix" style="border-bottom:2px  solid #EFEFEF;border-left:100px;">
+        <ul class="navbar" style="list-style-type:none;text-align:center;">
+            <li class="navbar_ikut"><a style="text-decoration:none;" href="{{URL::to('/')}}">HOME</a></li>
+            <li class="navbar_ikut"><a style="text-decoration:none;" href="">NEWS</a></li>
+            <li class="navbar_ikut dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">ARTICLE <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="blog-style1.htm" style="font-size: 12px;color:white;">BIDDING</a></li>
+                    <li><a href="blog-style1.htm" style="font-size: 12px;color:white;">CONVENTION</a></li>
+                    <li><a href="blog-style1.htm" style="font-size: 12px;color:white;">DEFENCE</a></li>
+                    <li><a href="blog-style1.htm" style="font-size: 12px;color:white;">PLAY</a></li>
+                </ul>
+            </li>
+            <li class="navbar_ikut dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">BRIDGE TOURNAMENT <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="blog-style1.htm" style="font-size: 12px;color:white;">SCHEDULE</a></li>
+                    <li><a href="blog-style1.htm" style="font-size: 12px;color:white;">RECENT RESULT</a></li>
+                </ul>
+            </li>
+            <li class="navbar_ikut"><a style="text-decoration:none;" href="">ABOUT US</a></li>
+            <li class="navbar_ikut"><a style="text-decoration:none;" href="">CONTACT US</a></li>
+        </ul>
+    </div>
+    <!-- end of navbar move -->
+
+    <div class="container">
+    
+      <div class="row header"><!-- Begin Header -->
+      
+        <!-- Logo
+        ================================================== -->
+        <div class="span5 logo">
+            <a href="index.htm"><img src="{{URL::to('assets/img/logo.png')}}" alt="" /></a>
+            <!-- <h5>BRIDGE YES</h5> -->
+        </div>
+
 <div class="span7 navigation">
             <div class="navbar hidden-phone">
             
@@ -16,78 +72,14 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">BRIDGE TOURNAMENT <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="blog-style1.htm">SCHEDULE</a></li>
+                    <li><a href="{{URL::to('allevent')}}">SCHEDULE</a></li>
                     <li><a href="blog-style1.htm">RECENT RESULTS</a></li>
                 </ul>
             </li>
             <li><a href="{{URL::to('/')}}">ABOUT US</a></li>
             <li id="tombol_login"><a href="{{URL::to('/')}}" data-toggle="modal" data-target="#LoginModal" >LOG IN</a></li>
-            <li style="background-color:rgb(216, 69, 11);color:white;"><a href="{{URL::to('/')}}" style="color:white;" data-toggle="modal" data-target="#SignupModal" >SIGN UP</a></li>
             </ul>
            
-            </div>
-
-            <!-- Modal -->
-            <div id="LoginModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">LOG IN</h4>
-                  </div>
-                  <div id="form_login">
-                     <form role="form" method="POST" action="{{URL::to('user/login')}}">
-                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <div class="form-group" style="margin-bottom:3%;">
-                        <label for="email">Username:</label>
-                        <input type="text" class="form-control" id="email" name="username" style="margin: 0 auto;display: block;width:100%;">
-                      </div>
-                      <div class="form-group">
-                        <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="pwd" name="password" style="margin: 0 auto;display: block;width:100%;">
-                      </div>
-                      <button type="submit" class="btn btn-warning" style="margin-top:5%;">LOG IN</button>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div id="SignupModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">SIGN UP</h4>
-                  </div>
-                  <div id="form_login">
-                     <form role="form" method="POST" action="{{URL::to('signup/auth')}}">
-                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <div class="form-group" style="margin-bottom:3%;">
-                        <label for="email">Username:</label>
-                        <input type="text" class="form-control" id="email" name="username" style="margin: 0 auto;display: block;width:100%;">
-                      </div>
-                      <div class="form-group" style="margin-bottom:3%;">
-                        <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="pwd" name="password" style="margin: 0 auto;display: block;width:100%;">
-                      </div>
-                      <div class="form-group" style="margin-bottom:3%;">
-                        <label for="email">Full Name:</label>
-                        <input type="text" class="form-control" id="email" name="nama" style="margin: 0 auto;display: block;width:100%;">
-                      </div>
-                      <button type="submit" class="btn btn-warning" style="margin-top:5%;">SIGN ME UP!</button>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <!-- Mobile Nav
@@ -112,4 +104,4 @@
                 </div>
                 </form>
 
-        </div>
+</div>

@@ -9,6 +9,8 @@ use input;
 use View;
 use Request;
 use App\Artikel;
+use App\News;
+use App\Event;
 class HomeController extends Controller
 {
     /**
@@ -20,12 +22,27 @@ class HomeController extends Controller
     {
         $this->data=array();
         $this->data['artikel'] = Artikel::get();
+        $this->data['news'] = News::get();
         return view('home', $this->data);
     }
 
     public function event()
     {
-        return view('list_event');
+        $this->data=array();
+        $this->data['event'] = Event::get();
+        return view('list_event', $this->data);
+    }
+
+    public function show_event($id)
+    {
+        $this->data['event'] = Event::find($id);
+        return view('event_detail', $this->data);
+    }
+
+    public function show_news($id)
+    {
+        $this->data['news'] = News::find($id);
+        return view('news_full', $this->data);
     }
 
     public function blog()
@@ -63,7 +80,7 @@ class HomeController extends Controller
         return view('result_detail');
     }
 
-    public function event_detail()
+    public function detil_event()
     {
         return view('event_detail');
     }

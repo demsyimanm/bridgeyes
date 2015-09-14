@@ -776,7 +776,22 @@ a.accordion-toggle{background: #f5f5f5;}
 }
 #feature.span6
 {
-	width: 100%;
+	width: 60%;
+}
+#feature_2.span6
+{
+	width: 35%;
+	float:right;
+}
+#list_post.span3
+{
+	margin-bottom: 0;
+
+}
+#list_post.span3 li
+{
+	margin-bottom: 0;
+	height: 100%;
 }
 #home.span9.blog
 {
@@ -826,8 +841,15 @@ a.accordion-toggle{background: #f5f5f5;}
 }
 #foto_slider.align-left
 {
-	width:70%;
-	height:250px;
+	width:95%;
+}
+.gambar_slider
+{
+	height: 250px;
+	overflow: hidden;
+	width: 70%;
+	float: left;
+	margin-bottom: 5%;
 }
 .form_group_bridge
 {
@@ -850,4 +872,115 @@ a.accordion-toggle{background: #f5f5f5;}
 	display: block;
 	width: 50%;
 	margin-top: 5%;
+}
+
+@media (max-width: 980px) 
+{
+	#feature.span6
+	{
+	 	width:100%;
+	}
+
+	.gambar_slider
+	{
+	  	width: 97%;
+	}
+}
+@media (max-width: 610px)
+{
+	#feature_2.span6
+	{
+	 	width:100%;
+	}
+}
+@media (max-width: 769px)
+{
+	#bidding.row.gallery-row
+	{
+		width: 100%;
+	}
+	#convention.row.gallery-row
+	{
+		padding-left: 0px;
+		width: 100%;
+	}
+}
+@media (max-width: 1200px)
+{
+	#convention.row.gallery-row
+	{
+		padding-left: 4%;
+	}
+}
+#header_fix
+{
+	position:fixed;
+	height:50px;
+	top:0;
+	background-color:white;
+	z-index:99;
+	right: 0;
+	left: 0px;
+	margin: 0px auto;
+	width: 510px;
+}
+#header_fix ul
+{
+/*	display: inline-block;*/
+	font-family: "Oswald", sans-serif; 
+}
+.navbar_ikut 
+{
+	float:left;
+	margin:0 auto;
+	padding-top:1em;
+/*	height:60px;*/
+	/*width:100%;*/
+	text-align:center;
+	text-decoration: none;
+	padding:1em;
+	color:white;
+	border-right:2px solid #EFEFEF;
+}
+.navbar_ikut:hover
+{
+	background-color:#D8450B;
+}
+.navbar_ikut a
+{
+	color: black;
+	text-decoration:none;
+}
+.navbar_ikut a:hover
+{
+	color: white;
+}
+@media (max-width: 1197px)
+{
+	.blog-post-grid li
+	{
+		height: 180px;
+	}
+}
+@media (max-width: 769px)
+{
+	.blog-post-grid li
+	{
+		text-align: center;
+	}
+	#convention.row.gallery-row 
+	{
+    	padding-left: 0%;
+	}
+	#list_post li
+	{
+		width: 100%;
+	}
+}
+@media (max-width: 510px)
+{
+	#header_fix
+	{
+		display: none;
+	}
 }

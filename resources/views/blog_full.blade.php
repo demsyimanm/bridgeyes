@@ -1,19 +1,5 @@
 @extends('master.master')
 @section('content')
-<div class="color-bar-1"></div>
-    <div class="color-bar-2 color-bg"></div>
-    
-    <div class="container main-container">
-    
-      <div class="row header"><!-- Begin Header -->
-      
-        <!-- Logo
-        ================================================== -->
-        <div class="span5 logo">
-        	<a href="index.htm"><img src="img/piccolo-logo.png" alt="" /></a>
-            <h5>Big Things... Small Packages</h5>
-        </div>
-        
         <!-- Main Navigation
         ================================================== -->
         @include('master.navbar')

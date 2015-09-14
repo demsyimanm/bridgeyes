@@ -31,7 +31,7 @@
                 </ul><br><br>
                 <div class="tab-content">
                   <div class="active tab-pane" id="information">
-                  	<form id="form1" action="{{ ('admin/event/update/'.$eve->id)}}" class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
+                  	<form id="form1" action="" class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
 				        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				        <div class="form-group" style="margin-top:1%">
 				          <label class="col-md-2 control-label">Judul</label>
