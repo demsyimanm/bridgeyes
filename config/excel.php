@@ -171,7 +171,11 @@ return array(
         | having the appropriate fonts installed.
         |
         */
+<<<<<<< HEAD
         /*'autosize-method'             => PHPExcel_Shared_Font::AUTOSIZE_METHOD_APPROX,*/
+=======
+        'autosize-method'             => PHPExcel_Shared_Font::AUTOSIZE_METHOD_APPROX,
+>>>>>>> 3470f351a3cce8ba501d5c2b71b1179cec77e6a6
 
         /*
         |--------------------------------------------------------------------------

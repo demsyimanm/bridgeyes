@@ -6,8 +6,14 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
+<<<<<<< HEAD
         "laravel/framework": "5.1.*",
-        "maatwebsite/excel": "~2.0.0"
+        "maatwebsite/excel": "^2.0",
+        "symfony/finder": "^2.7",
+        "symfony/symfony": "^2.7"
+=======
+        "laravel/framework": "5.1.*"
+>>>>>>> 3d0f7b3ecf1ccf83664913642cfc2c1d23b8319c
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

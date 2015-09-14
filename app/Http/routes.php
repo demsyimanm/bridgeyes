@@ -12,12 +12,15 @@
 */
 
 Route::get('/', 'HomeController@index');
+<<<<<<< HEAD
 Route::get('admin/login','AdminController@login');
 Route::post('admin/login',array('before' => 'csrf', 'uses' => 'AdminController@login'));
 Route::get('admin/logout','AdminController@logout');
 Route::get('admin/register','AccountController@create');
 Route::post('admin/register',array('before' => 'csrf', 'uses' => 'AccountController@create'));
 
+=======
+>>>>>>> 3470f351a3cce8ba501d5c2b71b1179cec77e6a6
 Route::get('user/', 'UserController@index');
 Route::get('user/write_news', 'UserController@create_news');
 Route::get('user/write_article', 'UserController@create_article');
@@ -29,12 +32,17 @@ Route::post('signup/auth/', array('before' => 'csrf', 'uses' => 'UserController@
 Route::post('user/login/', array('before' => 'csrf', 'uses' => 'UserController@login'));
 Route::post('user/postnews/', array('before' => 'csrf', 'uses' => 'UserController@post_news'));
 Route::get('allevent/', 'HomeController@event');
+<<<<<<< HEAD
 Route::get('event/', 'HomeController@event_detail');
+=======
+Route::get('event', 'HomeController@event_detail');
+>>>>>>> 3470f351a3cce8ba501d5c2b71b1179cec77e6a6
 Route::get('event/participant/', 'HomeController@participant');
 Route::get('event/result/', 'HomeController@result');
 Route::get('event/bulletins/', 'HomeController@bulletins');
 Route::get('event/gallery/', 'HomeController@gallery');
 
+<<<<<<< HEAD
 Route::group(['middleware' => 'auth'], function()
 {
 	Route::get('admin/home', 'AdminController@index');
@@ -93,3 +101,7 @@ Route::group(['middleware' => 'auth'], function()
 		Route::get('admin/event/manage/{id_event}/gallery/delete/{id_photo}','GalleryController@destroy');
 		Route::post('admin/event/manage/{id_event}/gallery/delete/{id_photo}',array('before' => 'csrf', 'uses' => 'GalleryController@destroy'));
 });
+=======
+
+// Route::post('signup', 'UserController@signup');
+>>>>>>> 3470f351a3cce8ba501d5c2b71b1179cec77e6a6

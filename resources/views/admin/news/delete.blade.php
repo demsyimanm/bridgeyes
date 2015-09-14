@@ -32,6 +32,10 @@
                     <h4 class="modal-title">Do you want to delete "<b>{{ $news->judul }}</b>"?</h4>
                   </div>
                   <div class="modal-footer">
+<<<<<<< HEAD
+=======
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+>>>>>>> 3470f351a3cce8ba501d5c2b71b1179cec77e6a6
                     <button type="submit" class="btn btn-danger" >Delete</button>
                   </div>
                 </div><!-- /.modal-content -->

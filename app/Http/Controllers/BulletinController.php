@@ -93,7 +93,11 @@ class BulletinController extends Controller
                     'file' => $target_file_final_file,
                     'event_id' => $id_event
                 ));
+<<<<<<< HEAD
                 return redirect('admin/event/update/'.$id_event);
+=======
+                return redirect('admin/event/update/'.$id_event.'#bulletin');
+>>>>>>> 3470f351a3cce8ba501d5c2b71b1179cec77e6a6
             }
         }
     }
