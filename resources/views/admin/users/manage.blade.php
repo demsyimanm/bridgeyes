@@ -48,7 +48,7 @@
 	      		<td><a href="" >{{ $user->nama }}</td>
 	      		<td>{{ $user->username }}</td>
 	      		<td><img src="{{$user->gambar}}" style="width:25%"></td>
-	      		<td>{{ $user->role_id }}</td>
+	      		<td>{{ $user->role->nama }}</td>
 	      		<td>
 	      				<a href="{{ URL::to('admin/users/update/'.$user->id) }}" class="btn btn-default"><i class="fa fa-pencil"></i>
 	      				<a href="{{ URL::to('admin/users/delete/'.$user->id) }}" class="btn btn-default" ><i class="fa fa-times"></i>

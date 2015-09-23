@@ -18,7 +18,7 @@ class Role extends Model
 	protected $SoftDelete = true;
 	protected $dates = ['deleted_at'];
 
-	public function user()
+	public function users()
 	{
 		return $this->hasMany('App\User');
 	}

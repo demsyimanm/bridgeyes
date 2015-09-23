@@ -10,6 +10,7 @@ use App\Role;
 use App\User;
 use App\Event;
 use App\Bulletin;
+use App\Gallery;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BulletinController;
 
@@ -22,8 +23,13 @@ class EventController extends Controller
      */
     public function index()
     {
-        $this->data['event'] = Event::get();
-        return view('admin.event.manage',$this->data);
+        if(Auth::user()->role_id == 1){
+            $this->data['event'] = Event::get();
+            return view('admin.event.manage',$this->data);
+        }
+        else{
+            return redirect('admin/event');
+        }
     }
 
     /**
@@ -33,7 +39,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2){
+        if(Auth::user()->role_id == 1){
             if (Request::isMethod('get')) {
                 $this->data = array();
                 $this->data['user'] = Auth::user()->id;
@@ -83,7 +89,7 @@ class EventController extends Controller
                     }
                     $target_file = $target_dir.$name;
                     // Check file size
-                    if ($_FILES["imginp"]["size"] > 500000) {
+                    if ($_FILES["imginp"]["size"] > 20000000) {
                         echo "Sorry, your file is too large.";
                         $uploadOk = 0;
                     }
@@ -134,7 +140,7 @@ class EventController extends Controller
                         }
                         $target_file_file = $target_dir_file.$name_file;
                         // Check file size
-                        if ($_FILES["file"]["size"] > 500000) {
+                        if ($_FILES["file"]["size"] > 20000000) {
                             echo "Sorry, your file is too large.";
                             $uploadOk_file = 0;
                         }
@@ -163,6 +169,9 @@ class EventController extends Controller
                 return redirect('admin/event');
             }
         }
+        else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -184,10 +193,16 @@ class EventController extends Controller
      */
     public function manage($id)
     {
-        $this->data = array();
-        $this->data['eve'] = Event::find($id);
-        $this->data['bulletin'] = Bulletin::where('event_id','=',$id)->get();
-        return view('admin.event.konten.manage',$this->data);
+        if(Auth::user()->role_id == 1){
+            $this->data = array();
+            $this->data['eve'] = Event::find($id);
+            $this->data['bulletin'] = Bulletin::where('event_id','=',$id)->get();
+            $this->data['gallery'] = Gallery::where('event_id','=',$id)->get();
+            return view('admin.event.konten.manage',$this->data);
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -211,7 +226,7 @@ class EventController extends Controller
     public function update($id)
     {
 
-        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2){
+        if(Auth::user()->role_id == 1){
             if (Request::isMethod('post')) {
 
                 $data = Input::all();
@@ -257,7 +272,7 @@ class EventController extends Controller
                     }
                     $target_file = $target_dir.$name;
                     // Check file size
-                    if ($_FILES["imginp"]["size"] > 500000) {
+                    if ($_FILES["imginp"]["size"] > 20000000) {
                         echo "Sorry, your file is too large.";
                         $uploadOk = 0;
                     }
@@ -308,7 +323,7 @@ class EventController extends Controller
                         }
                         $target_file_file = $target_dir_file.$name_file;
                         // Check file size
-                        if ($_FILES["file"]["size"] > 500000) {
+                        if ($_FILES["file"]["size"] > 20000000) {
                             echo "Sorry, your file is too large.";
                             $uploadOk_file = 0;
                         }
@@ -338,7 +353,7 @@ class EventController extends Controller
                 
             }
         } else {
-            return redirect('admin/event/');
+            return redirect('/');
         }
     }
 
@@ -350,15 +365,19 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        if (Request::isMethod('get')) {
-            $this->data = array();
-            $this->data['eve'] = Event::find($id);
-            return View::make('admin.event.delete', $this->data);
-        } else if (Request::isMethod('post')) {
-            $data = Input::all();
-            Event::where('id', $id)->delete();
-            return redirect('admin/event');
+        if(Auth::user()->role_id == 1){
+            if (Request::isMethod('get')) {
+                $this->data = array();
+                $this->data['eve'] = Event::find($id);
+                return View::make('admin.event.delete', $this->data);
+            } else if (Request::isMethod('post')) {
+                $data = Input::all();
+                Event::where('id', $id)->delete();
+                return redirect('admin/event');
+            }
         }
-         
+        else {
+            return redirect('/');
+        }
     }
 }

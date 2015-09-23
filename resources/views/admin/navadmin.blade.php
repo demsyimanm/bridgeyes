@@ -40,15 +40,15 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span><i class="fa fa-angle-down"></i></span><img src="{{ URL::to('assets/AdminLTE/dist/img/user4-128x128.jpg')}}" class="user-image" alt="User Image">
+                  <span><i class="fa fa-angle-down"></i></span><img src="{{ Auth::user()->gambar}}" class="user-image" alt="User Image">
                   <span class="hidden-xs"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="{{ URL::to('assets/AdminLTE/dist/img/user4-128x128.jpg')}}" class="img-circle" alt="User Image">
+                    <img src="{{ Auth::user()->gambar}}" class="img-circle" alt="User Image">
                     <p>
-
+                      {{ Auth::user()->username}}
                     </p>
                   </li>
                   <!-- Menu Footer-->
@@ -68,25 +68,26 @@
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
           <!-- sidebar menu: : style can be found in sidebar.less -->
+          
           <ul class="sidebar-menu">
-           
             <li class="treeview">
-              <a href="{{ URL::to('admin/login')}}">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+              <a href="{{ URL::to('admin/profile/'.Auth::user()->id)}}">
+                <i class="fa fa-user"></i> <span>Profile</span>
               </a>
             </li>
-
-             <li class="treeview">
-              <a href="{{ URL::to('admin/users')}}">
-                <i class="fa fa-user"></i> <span>Users</span>
-              </a>
-            </li>
-             
+            @if(Auth::user()->role_id==1)
+               <li class="treeview">
+                <a href="{{ URL::to('admin/users')}}">
+                  <i class="fa fa-users"></i> <span>Users</span>
+                </a>
+              </li>
+            @endif
             <li class="treeview">
               <a href="{{ URL::to('admin/news')}}">
                 <i class="fa fa-newspaper-o"></i> <span>News</span>
               </a>
             </li>
+
 
             <li class="treeview">
               <a href="{{ URL::to('admin/article')}}">
@@ -100,7 +101,7 @@
                 <li><a href="{{ URL::to('admin/artikel/4')}}"><i class="fa fa-circle-o"></i> Play</a></li>
               </ul>
             </li>
-
+            @if(Auth::user()->role_id==1)
             <li class="treeview">
               <a href="{{ URL::to('admin/event')}}">
                 <i class="fa fa-trophy"></i> <span>Tournament</span>
@@ -111,7 +112,7 @@
                 <li><a href="#"><i class="fa fa-circle-o"></i> Result</a></li>
               </ul>
             </li>
-
+            @endif
           </ul>
         </section>
         <!-- /.sidebar -->

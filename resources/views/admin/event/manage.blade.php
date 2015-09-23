@@ -51,7 +51,7 @@
 	      		<td><?php echo substr(nl2br($eve->konten),0,30)." ..."; ?></td>
 	      		<td>{{$eve->tanggal}}</td>
 	      		<td><img src="{{URL::to(substr($eve->gambar,6))}}" style="width:80%"></td>
-	      		<td>{{$eve->users_id }}</td>
+	      		<td>{{$eve->users->username }}</td>
 	      		<td>
 	      			@if(!empty($eve->file))
 	      				<a href="{{URL::to(substr($eve->file,6)) }}" class="btn btn-default" style="margin:auto;position:relative;display:block" download><i class="fa fa-download"></i> Download</a>

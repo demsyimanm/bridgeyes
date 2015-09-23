@@ -22,9 +22,9 @@ class Artikel extends Model
     protected $softDelete = true;
     protected $dates = ['deleted_at'];
 
-   /* public function user()
+    public function users()
     {
         return $this->belongsTo('App\User');
-    }*/
+    }
 
 }

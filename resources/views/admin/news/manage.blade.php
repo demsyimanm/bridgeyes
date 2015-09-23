@@ -50,7 +50,7 @@
 	      		<td><?php echo substr(nl2br($new->konten),0,30)." ..."; ?></td>
 	      		<td>{{$new->tanggal }}</td>
 	      		<td><img src="{{URL::to(substr($new->gambar,6))}}" style="width:90%"> </td>
-	      		<td>{{$new->users_id }}</td>
+	      		<td>{{$new->users->username }}</td>
 	      		<td>
 	      				<a href="{{ URL::to('admin/news/update/'. $new->id) }}" class="btn btn-default"><i class="fa fa-pencil"></i>
 	      				<a href="{{ URL::to('admin/news/delete/'. $new->id) }}" class="btn btn-default" ><i class="fa fa-times"></i>

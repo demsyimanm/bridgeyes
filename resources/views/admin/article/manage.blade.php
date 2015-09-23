@@ -47,7 +47,7 @@
 	      	<tr>
 	      		<td class="text-center"><?php echo $i++ ?></td>
 	      		<td><a href="{{ URL::to('admin/artikel/'.$id_kategori.'/update/'. $art->id) }}" >{{ $art->judul }}</td>
-	      		<td>{{ $art->users_id }}</td>
+	      		<td>{{ $art->users->username }}</td>
 	      		<td><?php echo substr(nl2br($art->konten),0,30)." ..."; ?></td>
 	      		<td>{{ $art->tanggal }}</td>
 	      		<td><img src="{{$art->gambar}}" style="width:25%"> </td>

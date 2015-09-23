@@ -67,6 +67,8 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('admin/users/delete/{id}',array('before' => 'csrf', 'uses' => 'AccountController@destroy'));
 	Route::get('admin/users/update/{id}','AccountController@update');
 	Route::post('admin/users/update/{id}',array('before' => 'csrf', 'uses' => 'AccountController@update'));
+	Route::get('admin/profile/{id}','AccountController@profile');
+	Route::post('admin/profile/{id}',array('before' => 'csrf', 'uses' => 'AccountController@profile'));
 
 	/*Event*/
 	Route::get('admin/event','EventController@index');

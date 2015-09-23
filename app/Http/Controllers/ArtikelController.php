@@ -21,11 +21,25 @@ class ArtikelController extends Controller
      */
     public function index($id)
     {
-        $this->data['users'] = User::get();
-        $this->data['artikel'] = Artikel::where('kategori_id','=',$id)->get();
-        $this->data['kategori'] = Kategori::find($id);
-        $this->data['id_kategori'] = $id;
-        return view('admin.article.manage',$this->data);
+        if(Auth::user()->role_id == 1){
+            $this->data['users'] = User::get();
+            $this->data['artikel'] = Artikel::where('kategori_id','=',$id)->get();
+            $this->data['kategori'] = Kategori::find($id);
+            $this->data['id_kategori'] = $id;
+            return view('admin.article.manage',$this->data);
+            
+        }
+        else if (Auth::user()->role_id == 2)
+        {
+            $this->data['users'] = User::get();
+            $this->data['artikel'] = Artikel::where('kategori_id','=',$id)->where('users_id','=',Auth::user()->id)->get();
+            $this->data['kategori'] = Kategori::find($id);
+            $this->data['id_kategori'] = $id;
+            return view('admin.article.manage',$this->data);
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -80,7 +94,7 @@ class ArtikelController extends Controller
                 }
                 $target_file = $target_dir.$name;
                 // Check file size
-                if ($_FILES["imginp"]["size"] > 500000) {
+                if ($_FILES["imginp"]["size"] > 20000000) {
                     echo "Sorry, your file is too large.";
                     $uploadOk = 0;
                 }
@@ -108,6 +122,9 @@ class ArtikelController extends Controller
                 ));
                 return redirect('admin/artikel/'.$id_1);
             }
+        }
+        else{
+            return redirect('/');
         }
     }
 
@@ -207,7 +224,7 @@ class ArtikelController extends Controller
                     }
                     $target_file = $target_dir.$name;
                     // Check file size
-                    if ($_FILES["imginp"]["size"] > 500000) {
+                    if ($_FILES["imginp"]["size"] > 20000000) {
                         echo "Sorry, your file is too large.";
                         $uploadOk = 0;
                     }
@@ -255,15 +272,19 @@ class ArtikelController extends Controller
      */
     public function destroy($id_kategori,$id_artikel)
     {
-        if (Request::isMethod('get')) {
-            $this->data = array();
-            $this->data['artikel'] = Artikel::find($id_artikel);
-            return View::make('admin.article.delete', $this->data);
-        } else if (Request::isMethod('post')) {
-            $data = Input::all();
-            Artikel::where('id', $id_artikel)->delete();
-            return redirect('admin/artikel/'.$id_kategori);
+        if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2){
+            if (Request::isMethod('get')) {
+                $this->data = array();
+                $this->data['artikel'] = Artikel::find($id_artikel);
+                return View::make('admin.article.delete', $this->data);
+            } else if (Request::isMethod('post')) {
+                $data = Input::all();
+                Artikel::where('id', $id_artikel)->delete();
+                return redirect('admin/artikel/'.$id_kategori);
+            }
         }
-         
+        else{
+            return redirect('/');
+        }
     }
 }

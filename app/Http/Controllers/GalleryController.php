@@ -31,7 +31,7 @@ class GalleryController extends Controller
      */
     public function create($id_event)
     {
-        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2){
+        if(Auth::user()->role_id == 1){
             if (Request::isMethod('get')) {
                 $this->data = array();
                 $this->data['event'] = Event::find($id_event);
@@ -72,7 +72,7 @@ class GalleryController extends Controller
                 }
                 $target_file = $target_dir.$name;
                 // Check file size
-                if ($_FILES["imginp"]["size"] > 50000000) {
+                if ($_FILES["imginp"]["size"] > 20000000) {
                     echo "Sorry, your file is too large.";
                     $uploadOk = 0;
                 }
@@ -97,8 +97,11 @@ class GalleryController extends Controller
                 ));
                 return redirect('admin/event/update/'.$id_event);
             }
+        }
+        else {
+                return redirect('/');
+        }
     }
-}
 
     /**
      * Store a newly created resource in storage.
@@ -153,16 +156,21 @@ class GalleryController extends Controller
      */
     public function destroy($id_event,$id_photo)
     {
-        if (Request::isMethod('get')) {
-            $this->data = array();
-            $this->data['event'] = Event::find($id_event);
-            $this->data['gallery'] = Gallery::find($id_photo);
-            return View::make('admin.event.konten.gallery.delete', $this->data);
-        } else if (Request::isMethod('post')) {
-            $data = Input::all();
-            Gallery::where('id','=', $id_photo)->delete();
-            return redirect('admin/event/update/'.$id_event);
+        if(Auth::user()->role_id == 1){
+            if (Request::isMethod('get')) {
+                $this->data = array();
+                $this->data['event'] = Event::find($id_event);
+                $this->data['gallery'] = Gallery::find($id_photo);
+                return View::make('admin.event.konten.gallery.delete', $this->data);
+            } else if (Request::isMethod('post')) {
+                $data = Input::all();
+                Gallery::where('id','=', $id_photo)->delete();
+                return redirect('admin/event/update/'.$id_event);
+            }
         }
+        else{
+             return redirect('/');
          
+        }
     }
 }

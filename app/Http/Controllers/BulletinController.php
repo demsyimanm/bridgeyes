@@ -31,7 +31,7 @@ class BulletinController extends Controller
      */
     public function create($id_event)
     {
-        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2){
+        if(Auth::user()->role_id == 1){
             if (Request::isMethod('get')) {
                 $this->data = array();
                 $this->data['event'] = Event::find($id_event);
@@ -70,7 +70,7 @@ class BulletinController extends Controller
                         }
                         $target_file_file = $target_dir_file.$name_file;
                         // Check file size
-                        if ($_FILES["file"]["size"] > 500000) {
+                        if ($_FILES["file"]["size"] > 20000000) {
                             echo "Sorry, your file is too large.";
                             $uploadOk_file = 0;
                         }
@@ -93,12 +93,11 @@ class BulletinController extends Controller
                     'file' => $target_file_final_file,
                     'event_id' => $id_event
                 ));
-<<<<<<< HEAD
                 return redirect('admin/event/update/'.$id_event);
-=======
-                return redirect('admin/event/update/'.$id_event.'#bulletin');
->>>>>>> 3470f351a3cce8ba501d5c2b71b1179cec77e6a6
             }
+        }
+        else{
+            return redirect('/');
         }
     }
 
@@ -141,7 +140,7 @@ class BulletinController extends Controller
     public function update($id_event,$id_bulletin)
     {
 
-        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2){
+        if(Auth::user()->role_id == 1){
             if (Request::isMethod('get')) {
                 $this->data = array();
                 $this->data['event'] = Event::find($id_event);
@@ -182,7 +181,7 @@ class BulletinController extends Controller
                     }
                     $target_file_file = $target_dir_file.$name_file;
                     // Check file size
-                    if ($_FILES["file"]["size"] > 500000) {
+                    if ($_FILES["file"]["size"] > 20000000) {
                         echo "Sorry, your file is too large.";
                         $uploadOk_file = 0;
                     }
@@ -207,7 +206,7 @@ class BulletinController extends Controller
                 return redirect('admin/event/update/'.$id_event);
             }
         } else {
-            return redirect('admin/event/update/'.$id_event);
+            return redirect('/');
         }
     }
 
@@ -219,16 +218,20 @@ class BulletinController extends Controller
      */
     public function destroy($id_event,$id_bulletin)
     {
-        if (Request::isMethod('get')) {
-            $this->data = array();
-            $this->data['event'] = Event::find($id_event);
-            $this->data['bulletin'] = Bulletin::find($id_bulletin);
-            return View::make('admin.event.konten.bulletin.delete', $this->data);
-        } else if (Request::isMethod('post')) {
-            $data = Input::all();
-            Bulletin::where('id','=', $id_bulletin)->delete();
-            return redirect('admin/event/update/'.$id_event);
+        if(Auth::user()->role_id == 1){
+            if (Request::isMethod('get')) {
+                $this->data = array();
+                $this->data['event'] = Event::find($id_event);
+                $this->data['bulletin'] = Bulletin::find($id_bulletin);
+                return View::make('admin.event.konten.bulletin.delete', $this->data);
+            } else if (Request::isMethod('post')) {
+                $data = Input::all();
+                Bulletin::where('id','=', $id_bulletin)->delete();
+                return redirect('admin/event/update/'.$id_event);
+            }
         }
-         
+        else{
+            return redirect('/');
+         }
     }
 }

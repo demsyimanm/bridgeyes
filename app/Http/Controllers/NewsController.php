@@ -20,8 +20,18 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $this->data['news'] = News::get();
-        return view('admin.news.manage',$this->data);
+        if(Auth::user()->role_id == 1){
+            $this->data['news'] = News::get();
+            return view('admin.news.manage',$this->data);
+        }
+        else if(Auth::user()->role_id == 2)
+        {
+            $this->data['news'] = News::where('users_id','=',Auth::user()->id)->get();
+            return view('admin.news.manage',$this->data);
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -74,7 +84,7 @@ class NewsController extends Controller
                 }
                 $target_file = $target_dir.$name;
                 // Check file size
-                if ($_FILES["imginp"]["size"] > 500000) {
+                if ($_FILES["imginp"]["size"] > 20000000) {
                     echo "Sorry, your file is too large.";
                     $uploadOk = 0;
                 }
@@ -101,6 +111,9 @@ class NewsController extends Controller
                 ));
                 return redirect('admin/news');
             }
+        }
+        else{
+            return redirect('/');
         }
     }
 
@@ -200,7 +213,7 @@ class NewsController extends Controller
                     }
                     $target_file = $target_dir.$name;
                     // Check file size
-                    if ($_FILES["imginp"]["size"] > 500000) {
+                    if ($_FILES["imginp"]["size"] > 20000000) {
                         echo "Sorry, your file is too large.";
                         $uploadOk = 0;
                     }
@@ -235,7 +248,7 @@ class NewsController extends Controller
                 return redirect('admin/news/');
             }
         } else {
-            return redirect('admin/news/');
+            return redirect('/');
         }
     }
 
@@ -247,15 +260,19 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        if (Request::isMethod('get')) {
-            $this->data = array();
-            $this->data['news'] = News::find($id);
-            return View::make('admin.news.delete', $this->data);
-        } else if (Request::isMethod('post')) {
-            $data = Input::all();
-            News::where('id', $id)->delete();
-            return redirect('admin/news');
+        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2){
+            if (Request::isMethod('get')) {
+                $this->data = array();
+                $this->data['news'] = News::find($id);
+                return View::make('admin.news.delete', $this->data);
+            } else if (Request::isMethod('post')) {
+                $data = Input::all();
+                News::where('id', $id)->delete();
+                return redirect('admin/news');
+            }
         }
-         
+        else {
+            return redirect('/');
+        }
     }
 }
